@@ -14,7 +14,7 @@ export function Header() {
   const data = useFastSpringStore((state) => state.data);
 
   const handleCartButton = () => {
-    window.fastspring?.builder.checkout();
+    window.fastspring?.builder?.checkout();
   };
 
   return (

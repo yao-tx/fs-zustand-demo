@@ -14,7 +14,6 @@ export function FastSpringIntegration({ children }: FastSpringIntegrationProps) 
 
   const fastSpringCallBack = (data: any) => {
     setData(data);
-    console.log(data);
     if (data && data.groups) {
       const newProducts = data.groups
         .filter((group: any) => group.items && Array.isArray(group.items))
@@ -24,7 +23,7 @@ export function FastSpringIntegration({ children }: FastSpringIntegrationProps) 
   };
 
   useEffect(() => {
-    (window as any).onFSPopupClosed = function (orderReference: any) {
+    window.onFSPopupClosed = function (orderReference: any) {
       if (window.fastspring && window.fastspring.builder) {
         window.fastspring.builder.reset();
       }
@@ -35,7 +34,7 @@ export function FastSpringIntegration({ children }: FastSpringIntegrationProps) 
       }
     };
 
-    (window as any).fastSpringCallBack = fastSpringCallBack;
+    window.fastSpringCallBack = fastSpringCallBack;
   }, [setData, setProducts]);
 
   return (

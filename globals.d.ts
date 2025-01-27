@@ -1,6 +1,16 @@
 declare global {
   interface Window {
-    fastspring: any;
+    onFSPopupClosed: (orderReference: OrderReference) => void;
+    fastSpringCallBack: (data: FastSpringData) => void;
+    fastspring?: {
+      builder?: {
+        reset: () => void;
+        checkout: () => void;
+        push: (data: {
+          products: { path: string; quantity: number }[];
+        }) => void;
+      };
+    };
   }
 }
 
